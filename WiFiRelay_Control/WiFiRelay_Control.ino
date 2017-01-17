@@ -17,8 +17,8 @@ boolean DEBUG = false;
 ESP8266WebServer server(80);
 
 void setup() {
-	delay(1000);
-	if (DEBUG) Serial.begin(74880);
+  delay(1000);
+  if (DEBUG) Serial.begin(74880);
 
   /**
    * Setup GPIO operation
@@ -30,7 +30,7 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, LOW);
   
-	if (DEBUG) Serial.println();
+  if (DEBUG) Serial.println();
   if (DEBUG) Serial.print("Connecting to ");
   if (DEBUG) Serial.println(ssid);
 
@@ -50,10 +50,10 @@ void setup() {
   if (DEBUG) Serial.println(WiFi.localIP());
   powerOnStatusLED();
   
-	server.on("/", handleHome);
+  server.on("/", handleHome);
   server.on("/gpio", handleGPIO);
-	server.begin();
-	if (DEBUG) Serial.println("HTTP server started");
+  server.begin();
+  if (DEBUG) Serial.println("HTTP server started");
 }
 
 /**
@@ -133,6 +133,6 @@ void powerOffStatusLED() {
 }
 
 void loop() {
-	server.handleClient();
+  server.handleClient();
   wifiHeartBeat();
 }
